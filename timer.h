@@ -28,6 +28,7 @@
 *                                             DEFINES
 *************************************************^************************************************/
 typedef uint32_t tmr_inst_t;
+typedef tmr_inst_t tmr_time_limit_t;
 
 /**************************************************************************************************
 *                                            VARIABLES
@@ -52,7 +53,7 @@ inline void tmrReset(tmr_inst_t * const lastTime_ms)
 *
 *  \note
 ******************************************************************************/
-inline uint8_t tmrCheck(const tmr_inst_t * const lastTime_ms, const tmr_inst_t timeLimit_ms)
+inline uint8_t tmrCheck(const tmr_inst_t * const lastTime_ms, const tmr_time_limit_t timeLimit_ms)
 {
 	return (*g_tick_ms_ptr - *lastTime_ms) >= timeLimit_ms;
 }
@@ -62,7 +63,7 @@ inline uint8_t tmrCheck(const tmr_inst_t * const lastTime_ms, const tmr_inst_t t
 *
 *  \note
 ******************************************************************************/
-inline uint8_t tmrCheckReset(tmr_inst_t * const lastTime_ms, const tmr_inst_t timeLimit_ms)
+inline uint8_t tmrCheckReset(tmr_inst_t * const lastTime_ms, const tmr_time_limit_t timeLimit_ms)
 {
 	if(tmrCheck(lastTime_ms, timeLimit_ms))
 	{
