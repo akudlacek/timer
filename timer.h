@@ -31,13 +31,10 @@
 #define TICK_TYPE uint32_t
 #endif
 
-typedef TICK_TYPE tmr_inst_t;
-typedef tmr_inst_t tmr_time_limit_t;
-
 /**************************************************************************************************
 *                                            VARIABLES
 *************************************************^************************************************/
-extern const volatile tmr_inst_t * volatile const g_tick_ms_ptr;
+extern const volatile TICK_TYPE * volatile const g_tick_ms_ptr;
 
 /**************************************************************************************************
 *                                         LOCAL FUNCTIONS
@@ -47,7 +44,7 @@ extern const volatile tmr_inst_t * volatile const g_tick_ms_ptr;
 *
 *  \note
 ******************************************************************************/
-inline void tmrReset(tmr_inst_t * const lastTime_ms)
+inline void tmrReset(TICK_TYPE * const lastTime_ms)
 {
 	*lastTime_ms = *g_tick_ms_ptr;
 }
@@ -57,7 +54,7 @@ inline void tmrReset(tmr_inst_t * const lastTime_ms)
 *
 *  \note
 ******************************************************************************/
-inline uint8_t tmrCheck(const tmr_inst_t * const lastTime_ms, const tmr_time_limit_t timeLimit_ms)
+inline uint8_t tmrCheck(const TICK_TYPE * const lastTime_ms, const TICK_TYPE timeLimit_ms)
 {
 	return (*g_tick_ms_ptr - *lastTime_ms) >= timeLimit_ms;
 }
@@ -67,7 +64,7 @@ inline uint8_t tmrCheck(const tmr_inst_t * const lastTime_ms, const tmr_time_lim
 *
 *  \note
 ******************************************************************************/
-inline uint8_t tmrCheckReset(tmr_inst_t * const lastTime_ms, const tmr_time_limit_t timeLimit_ms)
+inline uint8_t tmrCheckReset(TICK_TYPE * const lastTime_ms, const TICK_TYPE timeLimit_ms)
 {
 	if(tmrCheck(lastTime_ms, timeLimit_ms))
 	{
