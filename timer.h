@@ -34,46 +34,13 @@
 /**************************************************************************************************
 *                                            VARIABLES
 *************************************************^************************************************/
-extern const volatile TICK_TYPE * volatile const g_tick_ms_ptr;
+
 
 /**************************************************************************************************
 *                                         LOCAL FUNCTIONS
 *************************************************^************************************************/
-/******************************************************************************
-*  \brief
-*
-*  \note
-******************************************************************************/
-inline void tmrReset(TICK_TYPE * const lastTime_ms)
-{
-	*lastTime_ms = *g_tick_ms_ptr;
-}
-
-/******************************************************************************
-*  \brief
-*
-*  \note
-******************************************************************************/
-inline uint8_t tmrCheck(const TICK_TYPE * const lastTime_ms, const TICK_TYPE timeLimit_ms)
-{
-	return (*g_tick_ms_ptr - *lastTime_ms) >= timeLimit_ms;
-}
-
-/******************************************************************************
-*  \brief
-*
-*  \note
-******************************************************************************/
-inline uint8_t tmrCheckReset(TICK_TYPE * const lastTime_ms, const TICK_TYPE timeLimit_ms)
-{
-	if(tmrCheck(lastTime_ms, timeLimit_ms))
-	{
-		tmrReset(lastTime_ms);
-		return 1;
-	}
-	
-	return 0;
-}
-
+void    tmrReset     (TICK_TYPE * const lastTime_ms);
+uint8_t tmrCheck     (const TICK_TYPE * const lastTime_ms, const TICK_TYPE timeLimit_ms);
+uint8_t tmrCheckReset(TICK_TYPE * const lastTime_ms, const TICK_TYPE timeLimit_ms);
 
 #endif /* TIMER_H_ */
