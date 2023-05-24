@@ -9,8 +9,8 @@
  * HOW TO USE
  * declare two variables in your tick interrupt file like this:
  * 
- * static volatile tmr_inst_t tick_ms = 0;
- * const volatile tmr_inst_t * volatile const g_tick_ms_ptr = &tick_ms;
+ * static volatile TICK_TYPE tick_ms = 0;
+ * const volatile TICK_TYPE * volatile const g_tick_ms_ptr = &tick_ms;
  * 
  * tick_ms will be incremented in your tick interrupt (tick_ms++;)
  * g_tick_ms_ptr will be used by timer as a read only tick variable
@@ -42,5 +42,6 @@
 void    tmrReset     (TICK_TYPE * const lastTime_ms);
 uint8_t tmrCheck     (const TICK_TYPE * const lastTime_ms, const TICK_TYPE timeLimit_ms);
 uint8_t tmrCheckReset(TICK_TYPE * const lastTime_ms, const TICK_TYPE timeLimit_ms);
+
 
 #endif /* TIMER_H_ */
