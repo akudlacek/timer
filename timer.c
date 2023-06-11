@@ -21,9 +21,8 @@ extern const volatile TICK_TYPE * volatile const g_tick_ms_ptr;
 *                                            FUNCTIONS
 *************************************************^************************************************/
 /******************************************************************************
-*  \brief
-*
-*  \note
+*  \brief  resets timer
+*  \param  pointer to last time
 ******************************************************************************/
 void tmrReset(TICK_TYPE * const lastTime_ms)
 {
@@ -31,9 +30,10 @@ void tmrReset(TICK_TYPE * const lastTime_ms)
 }
 
 /******************************************************************************
-*  \brief
-*
-*  \note
+*  \brief  checks if time since last reset has expired
+*  \param  pointer to last time
+*  \param  time since
+*  \return timer expired, 0-timer hasn't expired, 1-timer has expired
 ******************************************************************************/
 uint8_t tmrCheck(const TICK_TYPE * const lastTime_ms, const TICK_TYPE timeLimit_ms)
 {
@@ -41,9 +41,10 @@ uint8_t tmrCheck(const TICK_TYPE * const lastTime_ms, const TICK_TYPE timeLimit_
 }
 
 /******************************************************************************
-*  \brief
-*
-*  \note
+*  \brief  checks if time since last reset has expired and automatically resets
+*  \param  pointer to last time
+*  \param  time since
+*  \return timer expired, 0-timer hasn't expired, 1-timer has expired
 ******************************************************************************/
 uint8_t tmrCheckReset(TICK_TYPE * const lastTime_ms, const TICK_TYPE timeLimit_ms)
 {
