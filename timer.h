@@ -42,6 +42,7 @@
 void    tmrReset     (TICK_TYPE * const lastTime_ms);
 uint8_t tmrCheck     (const TICK_TYPE * const lastTime_ms, const TICK_TYPE timeLimit_ms);
 uint8_t tmrCheckReset(TICK_TYPE * const lastTime_ms, const TICK_TYPE timeLimit_ms);
+void    tmrBlockWait (const TICK_TYPE waitTime_ms);
 
 
 #endif /* TIMER_H_ */

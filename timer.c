@@ -56,3 +56,16 @@ uint8_t tmrCheckReset(TICK_TYPE * const lastTime_ms, const TICK_TYPE timeLimit_m
 
 	return 0;
 }
+
+/******************************************************************************
+*  \brief blocking wait
+*  \param  wait time
+******************************************************************************/
+void tmrBlockWait(const TICK_TYPE waitTime_ms)
+{
+	TICK_TYPE lastTime_ms;
+
+	tmrReset(&lastTime_ms);
+
+	while(!tmrCheck(&lastTime_ms, waitTime_ms));
+}
