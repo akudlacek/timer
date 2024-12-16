@@ -22,6 +22,10 @@
 #ifndef TIMER_H_
 #define TIMER_H_
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <stdint.h>
 
 /**************************************************************************************************
@@ -44,5 +48,9 @@ uint8_t tmrCheck     (const TICK_TYPE * const lastTime_ms, const TICK_TYPE timeL
 uint8_t tmrCheckReset(TICK_TYPE * const lastTime_ms, const TICK_TYPE timeLimit_ms);
 void    tmrBlockWait (const TICK_TYPE waitTime_ms);
 
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* TIMER_H_ */
